@@ -1,4 +1,9 @@
-import { createAction, createReducer, createSlice } from '@reduxjs/toolkit';
+import {
+  createAction,
+  createReducer,
+  createSlice,
+  createSelector,
+} from '@reduxjs/toolkit';
 
 // action types
 // const ADD_BUG = 'ADD_BUG';
@@ -38,8 +43,21 @@ const slice = createSlice({
 });
 
 // Selectors
-export const selectUnresolvedBugs = (state) =>
-  state.entities.bugs.filter((bug) => !bug.resloved);
+// export const selectUnresolvedBugs = (state) =>
+//   /** This function returns new array of unresolved bugs
+//    * Problem: create duplicate results of same state
+//    */
+//   state.entities.bugs.filter((bug) => !bug.resloved);
+
+/**
+ * To solve duplicate state memoizing issue
+ * use a memoizing manager, that uses internal state
+ *
+ */
+export const selectUnresolvedBugs = createSelector(
+  (state) => state.entities.bugs,
+  (bugs) => bugs.filter((bug) => !bug.resloved)
+);
 
 export const { ADD_BUG, REMOVE_BUG, RESOLVE_BUG } = slice.actions;
 export default slice.reducer;
