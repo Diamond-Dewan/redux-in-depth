@@ -1,5 +1,4 @@
-const { createSlice } = require('@reduxjs/toolkit');
-const { LoaderOptionsPlugin } = require('webpack');
+import { createSlice } from '@reduxjs/toolkit';
 
 let lastId = 0;
 
