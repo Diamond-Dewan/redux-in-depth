@@ -1,6 +1,11 @@
 // import { ADD_BUG, REMOVE_BUG, RESOLVE_BUG } from './store/bugs';
 import configureStore from './store/configureStore';
-import { ADD_BUG, REMOVE_BUG, RESOLVE_BUG } from './store/bugs';
+import {
+  ADD_BUG,
+  REMOVE_BUG,
+  RESOLVE_BUG,
+  selectUnresolvedBugs,
+} from './store/bugs';
 import { ADD_PROJECT, REMOVE_PROJECT } from './store/projects';
 
 const store = configureStore();
@@ -17,3 +22,4 @@ store.dispatch(ADD_PROJECT({ name: 'Project 3' }));
 store.dispatch(REMOVE_PROJECT({ id: 1 }));
 
 console.log(store.getState());
+console.log(selectUnresolvedBugs(store.getState()));

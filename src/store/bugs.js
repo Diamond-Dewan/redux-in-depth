@@ -37,8 +37,11 @@ const slice = createSlice({
   },
 });
 
-export const { ADD_BUG, REMOVE_BUG, RESOLVE_BUG } = slice.actions;
+// Selectors
+export const selectUnresolvedBugs = (state) =>
+  state.entities.bugs.filter((bug) => !bug.resloved);
 
+export const { ADD_BUG, REMOVE_BUG, RESOLVE_BUG } = slice.actions;
 export default slice.reducer;
 
 /** action creators **/
