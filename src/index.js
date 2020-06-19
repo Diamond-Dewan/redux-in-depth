@@ -27,6 +27,8 @@ store.dispatch(REMOVE_PROJECT({ id: 1 }));
 
 store.dispatch(ADD_USER({ name: 'Jhon Doe' }));
 
+store.dispatch({ type: 'error', payload: { message: 'An error occured!!' } });
+
 console.log(store.getState());
 
 console.log(selectUnresolvedBugs(store.getState()));
